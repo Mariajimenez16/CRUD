@@ -1,0 +1,60 @@
+{% extends 'productos/base.html' %}
+
+{% block content %}
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+        <h4 class="mb-0 text-primary"><i class="bi bi-list-task me-2"></i>Lista de Productos</h4>
+        <a href="{% url 'producto_crear' %}" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-circle me-1"></i>Nuevo Producto
+        </a>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-4">ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th class="text-center pe-4">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                        <tr>
+                            <td class="ps-4">{{ producto.id }}</td>
+                            <td class="fw-semibold">{{ producto.nombre }}</td>
+                            <td class="text-truncate" style="max-width: 250px;">{{ producto.descripcion }}</td>
+                            <td><span class="badge bg-success bg-opacity-10 text-success border border-success-subtle px-2 py-1 fs-6">${{ producto.precio }}</span></td>
+                            <td>
+                                {% if producto.stock > 0 %}
+                                    <span class="badge bg-info bg-opacity-10 text-info border border-info-subtle px-2 py-1 fs-6">{{ producto.stock }} und.</span>
+                                {% else %}
+                                    <span class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle px-2 py-1 fs-6">Agotado</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center pe-4">
+                                <a href="{% url 'producto_editar' producto.id %}" class="btn btn-sm btn-outline-primary" title="Editar">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a href="{% url 'producto_eliminar' producto.id %}" class="btn btn-sm btn-outline-danger ms-1" title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-5">
+                                <i class="bi bi-inbox fs-1 d-block mb-3 text-secondary"></i>
+                                No hay productos registrados aún en el sistema.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
