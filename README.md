@@ -121,16 +121,6 @@ Usuario → request → view → modelo → base de datos → respuesta HTML
 
 ---
 
-## ❓ Preguntas típicas
-
-- is_valid(): valida datos
-- save(): guarda en BD
-- get_object_or_404(): evita errores si no existe
-- redirect(): redirige a otra vista
-- DecimalField: precisión en dinero
-
----
-
 ## 🚀 Mejoras
 
 - Login
