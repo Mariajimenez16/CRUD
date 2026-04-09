@@ -4,6 +4,11 @@ Este proyecto es una aplicación web desarrollada con Django que implementa un s
 
 Fue desarrollado como parte de la materia Plataformas de Programación Empresarial.
 
+#Integrantes:
+-Juan José Álvarez Restrepo 
+-Juan Sebastián Jaramillo
+-Maria Alexandra Jiménez Suárez
+
 ---
 
 ## 📌 Descripción del sistema
